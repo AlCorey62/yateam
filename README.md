@@ -42,7 +42,7 @@ When installing, each member gets a **funny random nickname** (Pesto, Praline, N
 
 ## Double-click installation
 
-1. **Download** this repository: green “Code” button → “Download ZIP”. Double-click the .zip file to unzip it.
+1. **Download [YaTeam.zip](../../releases/latest/download/YaTeam.zip)** (latest version). Double-click the .zip file to unzip it.
 2. In the unzipped folder, **double-click “Installer YaTeam”**.
 3. **The first time, macOS blocks it** (a downloaded file, not signed by an Apple developer account): “Installer YaTeam” Not Opened. Click **Done**, open **System Settings > Privacy & Security**, scroll down to the message about “Installer YaTeam” and click **Open Anyway**, confirm (password or Touch ID), then click **Open**. You only do this once.
 4. **Answer the questions** shown in windows: language, which AIs to add to the team (one question per AI; those not installed on your Mac are not offered), nicknames, the panel. A summary says what will be done; click **Install**. The details scroll in the Terminal window.

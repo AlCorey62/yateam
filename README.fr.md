@@ -42,7 +42,7 @@ Vous parlez à Claude comme d'habitude. Quand c'est utile, il délègue de lui-m
 
 ## Installation par double-clic
 
-1. **Téléchargez** ce dépôt : bouton vert « Code » → « Download ZIP ». Double-cliquez sur le fichier .zip pour le décompresser.
+1. **Téléchargez [YaTeam.zip](../../releases/latest/download/YaTeam.zip)** (dernière version). Double-cliquez sur le fichier .zip pour le décompresser.
 2. Dans le dossier décompressé, **double-cliquez sur « Installer YaTeam »**.
 3. **La première fois, macOS le bloque** (fichier téléchargé, non signé par un compte développeur Apple) : « Installer YaTeam » n'a pas été ouvert. Cliquez sur **Terminé**, ouvrez **Réglages Système > Confidentialité et sécurité**, descendez jusqu'au message sur « Installer YaTeam » et cliquez sur **Ouvrir quand même**, puis confirmez (mot de passe ou Touch ID) et cliquez sur **Ouvrir**. C'est à faire une seule fois.
 4. **Répondez aux questions** qui s'affichent dans des fenêtres : la langue, les IA à ajouter à l'équipe (une question par IA ; celles qui ne sont pas installées sur votre Mac ne sont pas proposées), les surnoms, le panneau. Un résumé dit ce qui va être fait ; cliquez sur **Installer**. Le détail défile dans la fenêtre du Terminal.

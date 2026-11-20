@@ -42,7 +42,7 @@ Bei der Installation bekommt jedes Mitglied einen **lustigen Zufalls-Spitznamen*
 
 ## Installation per Doppelklick
 
-1. **Laden Sie** dieses Repository herunter: grüner Knopf „Code“ → „Download ZIP“. Doppelklicken Sie auf die .zip-Datei, um sie zu entpacken.
+1. **Laden Sie [YaTeam.zip](../../releases/latest/download/YaTeam.zip) herunter** (neueste Version). Doppelklicken Sie auf die .zip-Datei, um sie zu entpacken.
 2. Doppelklicken Sie im entpackten Ordner auf **„Installer YaTeam“**.
 3. **Beim ersten Mal blockiert macOS die Datei** (heruntergeladen, nicht mit einem Apple-Entwicklerkonto signiert): „„Installer YaTeam“ wurde nicht geöffnet“. Klicken Sie auf **Fertig**, öffnen Sie **Systemeinstellungen > Datenschutz & Sicherheit**, scrollen Sie zur Meldung über „Installer YaTeam“ und klicken Sie auf **Dennoch öffnen**, bestätigen Sie (Passwort oder Touch ID) und klicken Sie auf **Öffnen**. Das ist nur einmal nötig.
 4. **Beantworten Sie die Fragen** in den Fenstern: die Sprache, welche KIs ins Team kommen (eine Frage pro KI; nicht installierte werden nicht angeboten), die Spitznamen, das Panel. Eine Zusammenfassung zeigt, was passieren wird; klicken Sie auf **Installieren**. Die Details laufen im Terminal-Fenster mit.

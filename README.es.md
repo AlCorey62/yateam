@@ -42,7 +42,7 @@ Al instalarlo, cada miembro recibe un **apodo divertido al azar** (Pesto, Pralin
 
 ## Instalación con doble clic
 
-1. **Descarga** este repositorio: botón verde «Code» → «Download ZIP». Haz doble clic en el archivo .zip para descomprimirlo.
+1. **Descarga [YaTeam.zip](../../releases/latest/download/YaTeam.zip)** (última versión). Haz doble clic en el archivo .zip para descomprimirlo.
 2. En la carpeta descomprimida, **haz doble clic en «Installer YaTeam»**.
 3. **La primera vez, macOS lo bloquea** (archivo descargado, no firmado con una cuenta de desarrollador de Apple). Cierra el mensaje, abre **Ajustes del Sistema > Privacidad y seguridad**, baja hasta el mensaje sobre «Installer YaTeam» y haz clic en **Abrir igualmente**; confirma (contraseña o Touch ID) y haz clic en **Abrir**. Solo hay que hacerlo una vez.
 4. **Responde a las preguntas** que aparecen en ventanas: el idioma, las IA que quieres añadir al equipo (una pregunta por IA; las que no están instaladas en tu Mac no se proponen), los apodos, el panel. Un resumen indica lo que se va a hacer; haz clic en **Instalar**. Los detalles aparecen en la ventana del Terminal.

@@ -42,7 +42,7 @@ Durante l'installazione, ogni membro riceve un **soprannome buffo estratto a cas
 
 ## Installazione con doppio clic
 
-1. **Scarica** questo repository: pulsante verde «Code» → «Download ZIP». Fai doppio clic sul file .zip per decomprimerlo.
+1. **Scarica [YaTeam.zip](../../releases/latest/download/YaTeam.zip)** (ultima versione). Fai doppio clic sul file .zip per decomprimerlo.
 2. Nella cartella decompressa, **fai doppio clic su «Installer YaTeam»**.
 3. **La prima volta macOS lo blocca** (file scaricato, non firmato con un account sviluppatore Apple). Chiudi il messaggio, apri **Impostazioni di Sistema > Privacy e sicurezza**, scorri fino al messaggio su «Installer YaTeam» e fai clic su **Apri comunque**; conferma (password o Touch ID) e fai clic su **Apri**. Va fatto una sola volta.
 4. **Rispondi alle domande** che compaiono nelle finestre: la lingua, le IA da aggiungere al team (una domanda per IA; quelle non installate sul tuo Mac non vengono proposte), i soprannomi, il pannello. Un riepilogo dice cosa verrà fatto; fai clic su **Installa**. I dettagli scorrono nella finestra del Terminale.
