@@ -1,0 +1,21 @@
+#!/usr/bin/python3 -I
+"""Fausses fenêtres (osascript) pour tester l'installation par double-clic (YATEAM_TEST_OSASCRIPT) :
+chaque appel note la question dans YATEAM_TEST_FENETRES_JOURNAL et rend la réponse suivante de
+YATEAM_TEST_REPONSES (une par ligne : bouton, texte saisi ou élément de liste)."""
+import os
+import sys
+
+arguments = sys.argv[1:]
+if arguments[:1] == ["-e"]:
+    arguments = arguments[2:]
+with open(os.environ["YATEAM_TEST_FENETRES_JOURNAL"], "a", encoding="utf-8") as f:
+    f.write(" | ".join(a.replace("\n", " ") for a in arguments) + "\n")
+chemin = os.environ["YATEAM_TEST_REPONSES"]
+with open(chemin, encoding="utf-8") as f:
+    reponses = f.read().splitlines()
+if not reponses:
+    print("§ANNULE§")
+    sys.exit(0)
+with open(chemin, "w", encoding="utf-8") as f:
+    f.write("\n".join(reponses[1:]) + ("\n" if reponses[1:] else ""))
+print(reponses[0])

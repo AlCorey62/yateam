@@ -1,0 +1,6 @@
+"CFBundleDisplayName" = "YaTeam Mac";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "YaTeam trägt die Termine, um die Sie Claude bitten, in Ihren Kalender ein. Ihr Kalender wird nie gelesen und niemand wird eingeladen.";
+"NSCalendarsUsageDescription" = "YaTeam trägt die Termine, um die Sie Claude bitten, in Ihren Kalender ein. Ihr Kalender wird nie gelesen und niemand wird eingeladen.";
+"NSRemindersFullAccessUsageDescription" = "YaTeam liest Ihre Erinnerungslisten für Claude und fügt Einträge hinzu oder hakt sie ab, wenn Sie Claude darum bitten.";
+"NSRemindersUsageDescription" = "YaTeam liest Ihre Erinnerungslisten für Claude und fügt Einträge hinzu oder hakt sie ab, wenn Sie Claude darum bitten.";
+"NSAppleEventsUsageDescription" = "YaTeam erstellt in „Notizen“ die Notizen, um die Sie Claude bitten. Ihre anderen Notizen liest es nicht.";

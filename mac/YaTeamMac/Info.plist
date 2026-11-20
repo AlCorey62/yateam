@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>local.yateam.mac</string>
+	<key>CFBundleName</key>
+	<string>YaTeamMac</string>
+	<key>CFBundleDisplayName</key>
+	<string>YaTeam Mac</string>
+	<key>CFBundleExecutable</key>
+	<string>YaTeamMac</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0</string>
+	<key>CFBundleVersion</key>
+	<string>2</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
+	<string>YaTeam adds to your calendar the events you ask Claude for. It never reads your calendar and never invites anyone.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>YaTeam adds to your calendar the events you ask Claude for. It never reads your calendar and never invites anyone.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>YaTeam creates in Notes the notes you ask Claude for. It does not read your other notes.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>YaTeam reads your Reminders lists for Claude, and adds or checks off items when you ask Claude to.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>YaTeam reads your Reminders lists for Claude, and adds or checks off items when you ask Claude to.</string>
+</dict>
+</plist>

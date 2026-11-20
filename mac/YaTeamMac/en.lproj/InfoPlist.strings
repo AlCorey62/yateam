@@ -1,0 +1,6 @@
+"CFBundleDisplayName" = "YaTeam Mac";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "YaTeam adds to your calendar the events you ask Claude for. It never reads your calendar and never invites anyone.";
+"NSCalendarsUsageDescription" = "YaTeam adds to your calendar the events you ask Claude for. It never reads your calendar and never invites anyone.";
+"NSRemindersFullAccessUsageDescription" = "YaTeam reads your Reminders lists for Claude, and adds or checks off items when you ask Claude to.";
+"NSRemindersUsageDescription" = "YaTeam reads your Reminders lists for Claude, and adds or checks off items when you ask Claude to.";
+"NSAppleEventsUsageDescription" = "YaTeam creates in Notes the notes you ask Claude for. It does not read your other notes.";

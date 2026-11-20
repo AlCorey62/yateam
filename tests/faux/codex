@@ -1,0 +1,54 @@
+#!/usr/bin/python3 -I
+"""Faux Codex CLI pour les tests : ne contacte rien et ne lit aucun identifiant.
+Vérifie que YaTeam le lance bien en lecture seule, répond, et écrit des compteurs de quota
+comme le vrai Codex. Mots magiques dans la consigne : ÉCHEC (erreur), LENT (8 s)."""
+import base64
+import json
+import os
+import re
+import sys
+import time
+import uuid
+
+args = sys.argv[1:]
+if args[:1] == ["--version"]:
+    print("codex-cli 0.0.0-test")
+    sys.exit(0)
+if args[:1] != ["exec"] or args[args.index("-s") + 1] != "read-only" or "--ignore-user-config" not in args:
+    print("faux codex : options inattendues %r" % args, file=sys.stderr)
+    sys.exit(2)
+sortie = args[args.index("-o") + 1]
+dossier = args[args.index("-C") + 1]
+consigne = sys.stdin.read()
+if "ÉCHEC" in consigne:
+    print("erreur simulée : quota épuisé", file=sys.stderr)
+    sys.exit(1)
+if "LENT" in consigne:
+    time.sleep(8)
+image = ""
+marque = re.search(r"img-[0-9a-f]{32}", consigne)
+if marque:
+    # Comme le vrai Codex : une session (historique avec la consigne), et l'image gardée dans
+    # ~/.codex/generated_images/<session>/, signalée par un « item_completed » de l'outil d'image.
+    session = str(uuid.uuid4())
+    dossier_images = os.path.expanduser("~/.codex/generated_images/%s" % session)
+    os.makedirs(dossier_images, exist_ok=True)
+    image = os.path.join(dossier_images, "ig_test.png")
+    with open(image, "wb") as f:
+        f.write(base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="))
+    jour_session = os.path.expanduser(time.strftime("~/.codex/sessions/%Y/%m/%d"))
+    os.makedirs(jour_session, exist_ok=True)
+    with open(os.path.join(jour_session, "rollout-%s-%s.jsonl" % (time.strftime("%Y-%m-%dT%H-%M-%S"), session)),
+              "w", encoding="utf-8") as f:
+        f.write(json.dumps({"type": "session_meta", "payload": {"instructions": consigne}}) + "\n")
+        f.write(json.dumps({"type": "event_msg", "payload": {"type": "item_completed", "item": {
+            "kind": "image_gen.generation", "status": "completed", "savedPath": image}}}) + "\n")
+with open(sortie, "w", encoding="utf-8") as f:
+    f.write("Réponse factice de Codex (dossier %s) : %s" % (os.path.basename(dossier), " ".join(consigne.split())[:60]))
+jour = os.path.expanduser(time.strftime("~/.codex/sessions/%Y/%m/%d"))
+os.makedirs(jour, exist_ok=True)
+with open(os.path.join(jour, "rollout-test.jsonl"), "a", encoding="utf-8") as f:
+    f.write(json.dumps({"type": "event_msg", "payload": {"type": "token_count", "rate_limits": {
+        "limit_id": "codex",
+        "primary": {"used_percent": 12.0, "window_minutes": 300, "resets_at": time.time() + 3600},
+        "secondary": {"used_percent": 3.0, "window_minutes": 10080, "resets_at": time.time() + 3 * 86400}}}}) + "\n")

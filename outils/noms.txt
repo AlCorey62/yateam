@@ -1,0 +1,30 @@
+# Surnoms tirés au hasard pour les chargés de projet (un par ligne, lettres latines sans accent).
+# Vérifiés dans les 7 langues de YaTeam : ni sens gênant, ni personnage ou logiciel connu.
+Pistache
+Grelot
+Gribouille
+Praline
+Noisette
+Caramel
+Galopin
+Muffin
+Biscuit
+Noodle
+Waffle
+Pesto
+Poncho
+Brioche
+Ravioli
+Nacho
+Ramen
+Bagel
+Dango
+Nori
+Mango
+Bretzel
+Donut
+Bambou
+Tapas
+Cacao
+Sorbet
+Nougat

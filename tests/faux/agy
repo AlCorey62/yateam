@@ -1,0 +1,42 @@
+#!/usr/bin/python3 -I
+"""Faux Antigravity CLI pour les tests : ne contacte rien et ne lit aucun identifiant.
+/quota rend des réserves factices ; une consigne qui parle de generate_image produit une
+petite image PNG dans le dossier de travail d'Antigravity, comme le vrai."""
+import base64
+import json
+import os
+import sys
+import time
+from datetime import datetime, timezone
+
+args = sys.argv[1:]
+if args[:1] == ["--version"]:
+    print("1.0.0-test")
+    sys.exit(0)
+if "--dangerously-skip-permissions" in args:
+    sys.exit(3)
+invite = args[args.index("-p") + 1]
+
+
+def iso(decalage):
+    return datetime.fromtimestamp(time.time() + decalage, timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+if invite == "/quota":
+    print(json.dumps({"command": {"data": {"groups": [{"buckets": [
+        {"id": "gemini-pro", "window": "5h", "remaining_fraction": 0.75, "reset_time": iso(7200)},
+        {"id": "gemini-pro", "window": "weekly", "remaining_fraction": 0.9, "reset_time": iso(4 * 86400)},
+        {"id": "3p-autres", "window": "5h", "remaining_fraction": 1.0, "reset_time": iso(5 * 3600)}]}]}}}))
+    sys.exit(0)
+if "--sandbox" not in args:
+    sys.exit(4)
+conversation = "conversation-de-test"
+if "generate_image" in invite:
+    dossier = os.path.expanduser("~/.gemini/antigravity-cli/brain/%s" % conversation)
+    os.makedirs(dossier, exist_ok=True)
+    png = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==")
+    with open(os.path.join(dossier, "image_%d.png" % int(time.time() * 1000)), "wb") as f:
+        f.write(png)
+tache = invite.split("--- TASK ---", 1)[-1]
+print(json.dumps({"response": "Réponse factice de Gemini : %s" % " ".join(tache.split())[:60],
+                  "conversation_id": conversation, "status": "done", "denied_actions": []}))

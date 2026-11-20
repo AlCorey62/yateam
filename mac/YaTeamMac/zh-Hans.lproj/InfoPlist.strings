@@ -1,0 +1,6 @@
+"CFBundleDisplayName" = "YaTeam Mac";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "YaTeam 会把你让 Claude 安排的事件添加到日历中。它从不读取你的日历，也从不邀请任何人。";
+"NSCalendarsUsageDescription" = "YaTeam 会把你让 Claude 安排的事件添加到日历中。它从不读取你的日历，也从不邀请任何人。";
+"NSRemindersFullAccessUsageDescription" = "YaTeam 为 Claude 读取你的提醒事项列表，并在你让 Claude 操作时添加或勾选项目。";
+"NSRemindersUsageDescription" = "YaTeam 为 Claude 读取你的提醒事项列表，并在你让 Claude 操作时添加或勾选项目。";
+"NSAppleEventsUsageDescription" = "YaTeam 会在“备忘录”中创建你让 Claude 写的备忘录。它不会读取你的其他备忘录。";

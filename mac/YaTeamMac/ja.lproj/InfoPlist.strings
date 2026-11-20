@@ -1,0 +1,6 @@
+"CFBundleDisplayName" = "YaTeam Mac";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "YaTeam は、Claude に頼んだ予定をカレンダーに追加します。カレンダーを読むことはなく、誰かを招待することもありません。";
+"NSCalendarsUsageDescription" = "YaTeam は、Claude に頼んだ予定をカレンダーに追加します。カレンダーを読むことはなく、誰かを招待することもありません。";
+"NSRemindersFullAccessUsageDescription" = "YaTeam は Claude のためにリマインダーのリストを読み、Claude に頼んだときに項目を追加したり完了にしたりします。";
+"NSRemindersUsageDescription" = "YaTeam は Claude のためにリマインダーのリストを読み、Claude に頼んだときに項目を追加したり完了にしたりします。";
+"NSAppleEventsUsageDescription" = "YaTeam は、Claude に頼んだメモを「メモ」に作成します。ほかのメモを読むことはありません。";

@@ -1,0 +1,44 @@
+#!/usr/bin/python3 -I
+"""Faux Claude Code pour les tests : répond à --version, au relevé /usage et à « mcp get/add/remove »
+(connecteurs gardés dans ~/.faux-claude-mcp.json, jamais dans la vraie configuration)."""
+import json
+import os
+import sys
+import time
+from datetime import datetime, timezone
+
+args = sys.argv[1:]
+if args[:1] == ["--version"]:
+    print("0.0.0-test (Claude Code)")
+    sys.exit(0)
+if args[:1] == ["mcp"]:
+    chemin = os.path.expanduser("~/.faux-claude-mcp.json")
+    try:
+        serveurs = json.load(open(chemin))
+    except (OSError, ValueError):
+        serveurs = {}
+    if args[1:2] == ["get"]:
+        s = serveurs.get(args[2])
+        if not s:
+            print("No MCP server found with name: %s" % args[2], file=sys.stderr)
+            sys.exit(1)
+        print("%s:\n  Scope: User config\n  Type: stdio\n  Command: %s\n  Args: %s" % (args[2], s[0], " ".join(s[1:])))
+        sys.exit(0)
+    if args[1:2] == ["add"] and "-s" in args and "--" in args:
+        nom = args[args.index("--") - 1]
+        serveurs[nom] = args[args.index("--") + 1:]
+    elif args[1:2] == ["remove"]:
+        serveurs.pop(args[-1], None)
+    else:
+        sys.exit(2)
+    json.dump(serveurs, open(chemin, "w"))
+    sys.exit(0)
+if "/usage" in args:
+    def iso(decalage):
+        return datetime.fromtimestamp(time.time() + decalage, timezone.utc).isoformat().replace("+00:00", "Z")
+    print(json.dumps({"type": "system", "subtype": "init"}))
+    print(json.dumps({"type": "assistant", "usage_report": {"rate_limits": {"limits": [
+        {"kind": "session", "percent": 42, "resets_at": iso(3600)},
+        {"kind": "weekly_all", "percent": 17, "resets_at": iso(3 * 86400)}]}}}))
+    sys.exit(0)
+sys.exit(2)

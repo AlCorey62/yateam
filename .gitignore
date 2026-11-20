@@ -1,0 +1,7 @@
+# Constructions du widget
+widget/.build/
+widget/build/
+# Python et macOS
+__pycache__/
+*.pyc
+.DS_Store

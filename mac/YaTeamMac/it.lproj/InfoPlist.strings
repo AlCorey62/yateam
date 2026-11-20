@@ -1,0 +1,6 @@
+"CFBundleDisplayName" = "YaTeam Mac";
+"NSCalendarsWriteOnlyAccessUsageDescription" = "YaTeam aggiunge al tuo calendario gli eventi che chiedi a Claude. Non legge mai il tuo calendario e non invita nessuno.";
+"NSCalendarsUsageDescription" = "YaTeam aggiunge al tuo calendario gli eventi che chiedi a Claude. Non legge mai il tuo calendario e non invita nessuno.";
+"NSRemindersFullAccessUsageDescription" = "YaTeam legge i tuoi elenchi di Promemoria per Claude e aggiunge o spunta elementi quando lo chiedi a Claude.";
+"NSRemindersUsageDescription" = "YaTeam legge i tuoi elenchi di Promemoria per Claude e aggiunge o spunta elementi quando lo chiedi a Claude.";
+"NSAppleEventsUsageDescription" = "YaTeam crea in Note le note che chiedi a Claude. Non legge le altre note.";

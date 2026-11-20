@@ -1,0 +1,74 @@
+#!/usr/bin/python3 -I
+"""Fausse app « YaTeam Mac » pour les tests (YATEAM_TEST_OUTIL_MAC) : mêmes commandes et même JSON
+que YaTeamMac.app, sur des listes de Rappels factices gardées dans ~/.faux-rappels.json. Ne touche ni
+aux vrais Rappels, ni au Calendrier, ni à Notes, ni à Apple Intelligence."""
+import json
+import os
+import sys
+
+sortie, commande, reste = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else ""), sys.argv[3:]
+etat_chemin = os.path.expanduser("~/.faux-rappels.json")
+try:
+    etat = json.load(open(etat_chemin, encoding="utf-8"))
+except (OSError, ValueError):
+    etat = {"listes": {"Courses": [{"nom": "Lait", "fait": False}, {"nom": "Lait de coco", "fait": False},
+                                   {"nom": "Pain", "fait": True}],
+                       "Travail": []},
+            "par_defaut": "Courses", "evenements": [], "notes": []}
+
+
+def terminer(reponse):
+    json.dump(etat, open(etat_chemin, "w", encoding="utf-8"), ensure_ascii=False)
+    json.dump(reponse, open(sortie, "w", encoding="utf-8"), ensure_ascii=False)
+    sys.exit(0 if reponse.get("ok") else 1)
+
+
+def liste(nom):
+    if nom not in etat["listes"]:
+        terminer({"ok": False, "code": "liste_introuvable", "nom": nom})
+    return etat["listes"][nom]
+
+
+def element(e):
+    return {"nom": e["nom"], "fait": e["fait"], "echeance": e.get("echeance", ""), "note": ""}
+
+
+if commande == "capacites":
+    terminer({"ok": True, "apple_intelligence": True, "raison": "", "macos": "26.0"})
+elif commande == "note":
+    if reste[2] and reste[2] != "Travail":
+        terminer({"ok": False, "code": "dossier_notes", "dossier": reste[2]})
+    etat.setdefault("notes", []).append(reste[:2])
+    terminer({"ok": True})
+elif commande == "listes":
+    terminer({"ok": True, "listes": [{"nom": n, "a_faire": sum(1 for e in l if not e["fait"]),
+                                      "par_defaut": n == etat["par_defaut"]} for n, l in etat["listes"].items()]})
+elif commande == "lire":
+    l = liste(reste[0])
+    elements = [element(e) for e in l if not e["fait"]]
+    if reste[1:2] == ["1"]:
+        elements += [element(e) for e in l if e["fait"]]
+    terminer({"ok": True, "liste": reste[0], "elements": elements, "faits_en_tout": sum(1 for e in l if e["fait"])})
+elif commande == "ajouter":
+    nom = reste[0] or etat["par_defaut"]
+    l = liste(nom)
+    for titre in reste[2:]:
+        l.append({"nom": titre, "fait": False, "echeance": reste[1]})
+    terminer({"ok": True, "liste": nom, "ajoutes": reste[2:]})
+elif commande == "cocher":
+    l = liste(reste[0])
+    cocher = reste[1] == "1"
+    faits = []
+    for titre in reste[2:]:
+        for e in l:
+            if e["nom"] == titre and e["fait"] != cocher:
+                e["fait"] = cocher
+                faits.append(titre)
+    terminer({"ok": True, "liste": reste[0], "faits": faits, "introuvables": []})
+elif commande == "evenement":
+    etat["evenements"].append(reste)
+    terminer({"ok": True, "calendrier": "Maison"})
+elif commande == "question":
+    terminer({"ok": True, "reponse": "Réponse factice du modèle du Mac (%s)" % reste[1][:40]})
+else:
+    terminer({"ok": False, "code": "arguments"})
